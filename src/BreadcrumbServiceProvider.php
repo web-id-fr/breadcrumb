@@ -23,7 +23,7 @@ class BreadcrumbServiceProvider extends PackageServiceProvider
         \Illuminate\Routing\Route::macro('breadcrumb', function (array $params) {
             if (count($params) !== 2) {
                 throw new \InvalidArgumentException(
-                    "The argument must be an array containing the class and the method to be invoked"
+                    'The argument must be an array containing the class and the method to be invoked'
                 );
             }
 
