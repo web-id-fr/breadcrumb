@@ -32,6 +32,7 @@ class RegisterBreadcrumb
         } catch (ContainerExceptionInterface | NotFoundExceptionInterface $exception) {
             return $next($request);
         }
+
         return $next($request);
     }
 }
