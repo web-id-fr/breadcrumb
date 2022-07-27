@@ -18,7 +18,8 @@
         "php": "^8.1",
         "spatie/laravel-package-tools": "^1.9.2",
         "illuminate/contracts": "^9.0",
-        "spatie/laravel-navigation": "^1.1"
+        "spatie/laravel-navigation": "^1.1",
+        "inertiajs/inertia-laravel": "^0.5.4"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
@@ -28,8 +29,7 @@
         "phpstan/extension-installer": "^1.1",
         "phpstan/phpstan-deprecation-rules": "^1.0",
         "phpstan/phpstan-phpunit": "^1.0",
-        "phpunit/phpunit": "^9.5",
-        "inertiajs/inertia-laravel": "^0.5.4"
+        "phpunit/phpunit": "^9.5"
     },
     "autoload": {
         "psr-4": {
