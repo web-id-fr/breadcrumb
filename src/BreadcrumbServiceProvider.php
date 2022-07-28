@@ -2,6 +2,7 @@
 
 namespace WebId\Breadcrumb;
 
+use Illuminate\Contracts\Container\BindingResolutionException;
 use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
 use Spatie\LaravelPackageTools\Exceptions\InvalidPackage;
@@ -13,6 +14,7 @@ class BreadcrumbServiceProvider extends PackageServiceProvider
 {
     /**
      * @throws InvalidPackage
+     * @throws BindingResolutionException
      */
     public function register(): void
     {
@@ -43,13 +45,13 @@ class BreadcrumbServiceProvider extends PackageServiceProvider
             /** @var Route $route */
             $route = $this;
 
-            /** @var Router $router */
-            $router = app()->make('router');
-
-            $router->aliasMiddleware('breadcrumb', RegisterBreadcrumb::class);
-
             $route->middleware(sprintf('breadcrumb:%s,%s', $class, $method));
         });
+
+        /** @var Router $router */
+        $router = app()->make('router');
+
+        $router->aliasMiddleware('breadcrumb', RegisterBreadcrumb::class);
     }
 
     public function boot(): void
