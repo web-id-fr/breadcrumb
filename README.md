@@ -18,8 +18,19 @@ php artisan vendor:publish --provider="WebId\Breadcrumb\BreadcrumbServiceProvide
 
 This package uses Spatie's Laravel Navigation package (https://github.com/spatie/laravel-navigation).
 
-For now, it only works with Inertia (it adds a `breadcrumb` key in the Inertia Shared data with your breacrumb)
+### Frontend
 
+If you are using Inertia, update the `frontend` key to the config file to `inertia`.
+
+```php
+'frontend' => 'inertia',
+```
+
+If your project uses Blade templates, set the config to `blade`.
+
+```php
+'frontend' => 'blade',
+```
 ### Breadcrumb root element
 
 Edit the `breadcrumb_root` title and route name in your published `breadcrumb.php` config file.
@@ -61,7 +72,7 @@ class BlogBreadcrumb extends Breadcrumb
 Notice that the `add()` method only takes a name (blog). Indeed, the last element of a breadcrumb being
 the active page, you don't need to attach a link to it.
 
-In this example, your Inertia view should have a `breadcrumb` key with this data:
+In this example, your view should have a `breadcrumb` key with this data:
 
 ```json
 [
@@ -93,7 +104,7 @@ public function show(Post $post): array
 
 > Notice that your can Typehint a model in your breadcrumb methods as if you were in a controller method.
 
-In this example, your Inertia view should have a `breadcrumb` key with this data:
+In this example, your view should have a `breadcrumb` key with this data:
 
 ```json
 [

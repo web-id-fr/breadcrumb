@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Container\Container;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\View;
 use Inertia\Inertia;
 use Psr\Container\ContainerExceptionInterface;
 use Psr\Container\NotFoundExceptionInterface;
@@ -28,7 +29,12 @@ class RegisterBreadcrumb
         try {
             /** @phpstan-ignore-next-line */
             $breadcrumb = $this->app->call([$this->app->make($class), $method], $params);
-            Inertia::share('breadcrumb', $breadcrumb);
+
+            if (config('breadcrumb.breadcrumb_root.title') === 'inertia') {
+                Inertia::share('breadcrumb', $breadcrumb);
+            } else {
+                View::share('breadcrumb', $breadcrumb);
+            }
         } catch (ContainerExceptionInterface | NotFoundExceptionInterface $exception) {
             return $next($request);
         }
