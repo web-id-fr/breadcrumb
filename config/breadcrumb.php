@@ -2,7 +2,8 @@
 
 return [
     'breadcrumb_root' => [
-        'title' => 'Dashboard',
-        'route_name' => '/',
+        'title' => 'Homepage',
+        'route_name' => 'app.homepage',
     ],
+    'frontend' => 'inertia',
 ];
