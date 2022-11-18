@@ -1,7 +1,6 @@
 <?php
 
 namespace Illuminate\Routing {
-
     /**
      * @see \WebId\Breadcrumb\Http\Middleware\RegisterBreadcrumb
      *
