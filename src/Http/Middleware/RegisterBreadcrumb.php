@@ -30,7 +30,7 @@ class RegisterBreadcrumb
             /** @phpstan-ignore-next-line */
             $breadcrumb = $this->app->call([$this->app->make($class), $method], $params);
 
-            if (config('breadcrumb.breadcrumb_root.title') === 'inertia') {
+            if (config('breadcrumb.frontend') === 'inertia') {
                 Inertia::share('breadcrumb', $breadcrumb);
             } else {
                 View::share('breadcrumb', $breadcrumb);
