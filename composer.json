@@ -15,11 +15,11 @@
         }
     ],
     "require": {
-        "php": "^8.1",
+        "php": "^8.2",
         "spatie/laravel-package-tools": "^1.9.2",
         "illuminate/contracts": "^9.0",
         "spatie/laravel-navigation": "^1.1",
-        "inertiajs/inertia-laravel": "^0.5.4"
+        "inertiajs/inertia-laravel": "^0.6.9"
     },
     "require-dev": {
         "laravel/pint": "^1.0",
