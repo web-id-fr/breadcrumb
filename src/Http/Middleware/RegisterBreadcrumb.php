@@ -35,7 +35,7 @@ class RegisterBreadcrumb
             } else {
                 View::share('breadcrumb', $breadcrumb);
             }
-        } catch (ContainerExceptionInterface | NotFoundExceptionInterface $exception) {
+        } catch (ContainerExceptionInterface|NotFoundExceptionInterface $exception) {
             return $next($request);
         }
 
