@@ -14,7 +14,7 @@ abstract class Breadcrumb
     {
         return $this->navigation
             ->add(
-                strval(config('breadcrumb.breadcrumb_root.title')),
+                strval(__(config('breadcrumb.breadcrumb_root.title'))),
                 route(strval(config('breadcrumb.breadcrumb_root.route_name')))
             );
     }
