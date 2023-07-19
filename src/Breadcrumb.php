@@ -12,10 +12,15 @@ abstract class Breadcrumb
 
     protected function baseBreadcrumb(): Navigation
     {
+        /** @var string|null $rootTitle */
+        $rootTitle = config('breadcrumb.breadcrumb_root.title');
+        /** @var string|null $routeName */
+        $routeName = config('breadcrumb.breadcrumb_root.route_name');
+
         return $this->navigation
             ->add(
-                strval(__(config('breadcrumb.breadcrumb_root.title'))),
-                route(strval(config('breadcrumb.breadcrumb_root.route_name')))
+                __(strval($rootTitle)),
+                route(strval($routeName))
             );
     }
 
