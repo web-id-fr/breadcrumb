@@ -42,8 +42,8 @@
         }
     },
     "scripts": {
-        "analyse": "vendor/bin/phpstan analyse",
-        "test": "vendor/bin/phpunit"
+        "test": "phpunit",
+        "stan": "phpstan --memory-limit=4G"
     },
     "config": {
         "sort-packages": true,
