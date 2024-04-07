@@ -25,7 +25,7 @@ abstract class Breadcrumb
     }
 
     /**
-     * @param array<array<string, string>> $breadcrumb
+     * @param  array<array<string, string>>  $breadcrumb
      * @return array<array<string, string>>
      */
     public function render(array $breadcrumb): array

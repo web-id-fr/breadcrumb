@@ -14,7 +14,8 @@ readonly class BreadcrumbElement
     }
 
     /**
-     * @param array<string, string> $breadcrumb
+     * @param  array<string, string>  $breadcrumb
+     *
      * @throws ValidationException
      */
     public static function make(array $breadcrumb): self

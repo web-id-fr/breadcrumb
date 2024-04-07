@@ -30,7 +30,7 @@ class BreadcrumbElementTest extends TestCase
         $breadcrumbArray = [
             'url' => 'https://www.url.com',
             'title' => 'title',
-            'another_key' => 'something'
+            'another_key' => 'something',
         ];
 
         $breadcrumbElement = BreadcrumbElement::make($breadcrumbArray);
