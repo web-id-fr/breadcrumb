@@ -1,4 +1,4 @@
-name: PHPStan
+name: run-tests
 
 on:
   push:
@@ -7,8 +7,8 @@ on:
       - 'phpstan.neon.dist'
 
 jobs:
-  phpstan:
-    name: phpstan
+  test:
+    name: tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -24,3 +24,6 @@ jobs:
 
       - name: Run PHPStan
         run: ./vendor/bin/phpstan --error-format=github
+
+      - name: Run PHPUnit
+        run: ./vendor/bin/phpunit
