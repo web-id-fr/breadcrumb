@@ -23,7 +23,7 @@ class RegisterBreadcrumb
         /** @var Route $currentRoute */
         $currentRoute = $request->route();
 
-        /** @var array $params */
+        /** @var array<string, mixed> $params */
         $params = $currentRoute->parameters;
 
         try {

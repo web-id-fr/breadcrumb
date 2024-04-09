@@ -2,22 +2,38 @@
 
 namespace WebId\Breadcrumb;
 
-class BreadcrumbElement
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
+
+readonly class BreadcrumbElement
 {
-    public function __construct(
-        readonly private string $url,
-        readonly private string $title
+    private function __construct(
+        private string $url,
+        private string $title
     ) {
     }
 
+    /**
+     * @param  array<string, string>  $breadcrumb
+     *
+     * @throws ValidationException
+     */
     public static function make(array $breadcrumb): self
     {
+        $validated = Validator::make($breadcrumb, [
+            'url' => ['required', 'url'],
+            'title' => ['present', 'string'],
+        ])->validate();
+
         return new self(
-            url: $breadcrumb['url'],
-            title: $breadcrumb['title']
+            url: $validated['url'],
+            title: $validated['title']
         );
     }
 
+    /**
+     * @return array<string, string>
+     */
     public function toArray(): array
     {
         return [
