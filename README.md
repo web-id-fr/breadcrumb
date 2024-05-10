@@ -81,7 +81,6 @@ In this example, your view should have a `breadcrumb` key with this data:
         "title": "Homepage"
     },
     {
-        "url": "",
         "title": "Blog"
     }
 ]
@@ -117,7 +116,6 @@ In this example, your view should have a `breadcrumb` key with this data:
         "title": "Blog"
     },
     {
-        "url": "",
         "title": "Article title"
     }
 ]

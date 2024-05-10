@@ -8,8 +8,8 @@ use Illuminate\Validation\ValidationException;
 readonly class BreadcrumbElement
 {
     private function __construct(
-        private string $url,
-        private string $title
+        private string $title,
+        private ?string $url,
     ) {
     }
 
@@ -21,24 +21,24 @@ readonly class BreadcrumbElement
     public static function make(array $breadcrumb): self
     {
         $validated = Validator::make($breadcrumb, [
-            'url' => ['required', 'url'],
             'title' => ['present', 'string'],
+            'url' => ['url'],
         ])->validate();
 
         return new self(
-            url: $validated['url'],
-            title: $validated['title']
+            title: $validated['title'],
+            url: $validated['url'] ?? null,
         );
     }
 
     /**
-     * @return array<string, string>
+     * @return array<string, string|null>
      */
     public function toArray(): array
     {
         return [
-            'url' => $this->url,
             'title' => $this->title,
+            'url' => $this->url,
         ];
     }
 }

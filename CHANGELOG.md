@@ -1,3 +1,6 @@
 # Changelog
 
-All notable changes to `:package_name` will be documented in this file.
+# 1.2.4
+
+- Dependencies upgrade
+- URL field is not required anymore
