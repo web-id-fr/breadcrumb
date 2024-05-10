@@ -12,7 +12,7 @@ class BreadcrumbElementTest extends TestCase
         foreach ($this->correctArrayDataProvider() as $case) {
             $breadcrumbElement = BreadcrumbElement::make($case);
             $this->assertInstanceOf(BreadcrumbElement::class, $breadcrumbElement);
-    }
+        }
 
     }
 
