@@ -6,7 +6,7 @@ use Spatie\Navigation\Navigation;
 
 abstract class Breadcrumb
 {
-    public function __construct(private Navigation $navigation) {}
+    public function __construct(private readonly Navigation $navigation) {}
 
     protected function baseBreadcrumb(): Navigation
     {
