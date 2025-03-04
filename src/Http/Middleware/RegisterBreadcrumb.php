@@ -14,9 +14,7 @@ use Symfony\Component\HttpFoundation\Response;
 
 class RegisterBreadcrumb
 {
-    public function __construct(private Container $app)
-    {
-    }
+    public function __construct(private Container $app) {}
 
     public function handle(Request $request, Closure $next, string $class, string $method): Response
     {
