@@ -10,8 +10,7 @@ readonly class BreadcrumbElement
     private function __construct(
         private string $title,
         private ?string $url,
-    ) {
-    }
+    ) {}
 
     /**
      * @param  array<string, string>  $breadcrumb
