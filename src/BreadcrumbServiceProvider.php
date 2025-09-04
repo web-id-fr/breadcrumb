@@ -9,6 +9,7 @@ use Spatie\LaravelPackageTools\Exceptions\InvalidPackage;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 use WebId\Breadcrumb\Http\Middleware\RegisterBreadcrumb;
+use Webmozart\Assert\Assert;
 
 class BreadcrumbServiceProvider extends PackageServiceProvider
 {
@@ -31,6 +32,9 @@ class BreadcrumbServiceProvider extends PackageServiceProvider
 
             $class = $params[0];
             $method = $params[1];
+
+            Assert::string($class);
+            Assert::string($method);
 
             if (! class_exists($class) || get_parent_class($class) !== Breadcrumb::class) {
                 throw new \InvalidArgumentException(
