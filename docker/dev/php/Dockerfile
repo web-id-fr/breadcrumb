@@ -49,38 +49,6 @@ COPY --from=composer /usr/bin/composer /usr/bin/composer
 
 CMD ["php", "-a"]
 
-### FPM ###
-
-FROM cli AS fpm
-
-# Install FPM
-RUN apt-get update \
-    && apt-get -y --no-install-recommends install php8.3-fpm \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* /usr/share/doc/*
-
-STOPSIGNAL SIGQUIT
-
-# PHP-FPM packages need a nudge to make them docker-friendly
-COPY php-fpm-overrides.conf /etc/php/8.3/fpm/pool.d/z-overrides.conf
-
-RUN groupadd --force -g $WWWGROUP web
-RUN useradd -ms /bin/bash --no-user-group -g $WWWGROUP -u $WWWUSER web
-
-# Setup php-fpm PID ownership
-RUN touch /run/php-fpm.pid && chown web:web /run/php-fpm.pid
-
-USER web
-
-WORKDIR "/application"
-
-CMD ["/usr/sbin/php-fpm8.3", "-O" ]
-
-# Open up fcgi port
-EXPOSE 9000
-
-FROM cli AS worker
-
 RUN groupadd --force -g $WWWGROUP web
 RUN useradd -ms /bin/bash --no-user-group -g $WWWGROUP -u $WWWUSER web
 

@@ -1,14 +1,9 @@
-networks:
-  default:
-    name: breadcrumb_default
-
 services:
-
-  php-fpm:
+  php-cli:
     build:
       context: ./docker/dev/php
       dockerfile: Dockerfile
-      target: fpm
+      target: cli
       args:
         WWWUSER: "${WWWUSER:-1000}"
         WWWGROUP: "${WWWGROUP:-1000}"
@@ -16,4 +11,4 @@ services:
     working_dir: /application
     volumes:
       - ".:/application"
-      - "./docker/dev/php/php-ini-overrides.ini:/etc/php/8.3/fpm/conf.d/99-overrides.ini"
+    tty: true
