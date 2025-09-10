@@ -4,6 +4,7 @@ namespace WebId\Breadcrumb;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
+use WebId\Breadcrumb\Exceptions\InvalidBreadcrumbElementException;
 
 readonly class BreadcrumbElement
 {
@@ -15,18 +16,23 @@ readonly class BreadcrumbElement
     /**
      * @param  array<string, string>  $breadcrumb
      *
+     * @throws InvalidBreadcrumbElementException
      * @throws ValidationException
      */
     public static function make(array $breadcrumb): self
     {
-        $validated = Validator::make($breadcrumb, [
+        $validator = Validator::make($breadcrumb, [
             'title' => ['present', 'string'],
             'url' => ['url'],
-        ])->validate();
+        ]);
+
+        if ($validator->fails()) {
+            throw new InvalidBreadcrumbElementException($validator);
+        }
 
         return new self(
-            title: $validated['title'],
-            url: $validated['url'] ?? null,
+            title: $breadcrumb['title'],
+            url: $breadcrumb['url'] ?? null,
         );
     }
 

@@ -2,8 +2,8 @@
 
 namespace WebId\Breadcrumb\Tests;
 
-use Illuminate\Validation\ValidationException;
 use WebId\Breadcrumb\BreadcrumbElement;
+use WebId\Breadcrumb\Exceptions\InvalidBreadcrumbElementException;
 
 class BreadcrumbElementTest extends TestCase
 {
@@ -19,7 +19,7 @@ class BreadcrumbElementTest extends TestCase
     public function test_a_validation_exception_is_thrown_if_incorrect_array_is_provided_as_parameter(): void
     {
         foreach ($this->incorrectArrayDataProvider() as $case) {
-            $this->expectException(ValidationException::class);
+            $this->expectException(InvalidBreadcrumbElementException::class);
             BreadcrumbElement::make($case);
         }
     }

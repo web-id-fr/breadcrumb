@@ -2,9 +2,6 @@ name: run-tests
 
 on:
   push:
-    paths:
-      - '**.php'
-      - 'phpstan.neon.dist'
 
 jobs:
   test:
@@ -16,7 +13,7 @@ jobs:
       - name: Setup PHP
         uses: shivammathur/setup-php@v2
         with:
-          php-version: '8.2'
+          php-version: '8.3'
           coverage: none
 
       - name: Install composer dependencies

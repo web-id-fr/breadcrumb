@@ -1,0 +1,14 @@
+services:
+  php-cli:
+    build:
+      context: ./docker/dev/php
+      dockerfile: Dockerfile
+      target: cli
+      args:
+        WWWUSER: "${WWWUSER:-1000}"
+        WWWGROUP: "${WWWGROUP:-1000}"
+    restart: unless-stopped
+    working_dir: /application
+    volumes:
+      - ".:/application"
+    tty: true

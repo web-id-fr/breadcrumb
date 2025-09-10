@@ -9,12 +9,11 @@ use Illuminate\Routing\Route;
 use Illuminate\Support\Facades\View;
 use Inertia\Inertia;
 use Psr\Container\ContainerExceptionInterface;
-use Psr\Container\NotFoundExceptionInterface;
 use Symfony\Component\HttpFoundation\Response;
 
-class RegisterBreadcrumb
+readonly class RegisterBreadcrumb
 {
-    public function __construct(private readonly Container $app) {}
+    public function __construct(private Container $app) {}
 
     public function handle(Request $request, Closure $next, string $class, string $method): Response
     {
@@ -33,10 +32,12 @@ class RegisterBreadcrumb
             } else {
                 View::share('breadcrumb', $breadcrumb);
             }
-        } catch (ContainerExceptionInterface|NotFoundExceptionInterface $exception) {
+        } catch (ContainerExceptionInterface) {
+            /** @var Response */
             return $next($request);
         }
 
+        /** @var Response */
         return $next($request);
     }
 }
