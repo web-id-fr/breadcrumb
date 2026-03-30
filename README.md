@@ -2,6 +2,8 @@
 
 ## Installation
 
+Requires **PHP 8.3+**, **Laravel 12 or 13**, and **inertiajs/inertia-laravel** 2.x or 3.x when using the Inertia frontend option. (This package does not support PHP 8.2, even though Laravel 12 allows it upstream.)
+
 You can install the package via composer:
 
 ```bash
